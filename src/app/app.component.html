@@ -1,0 +1,26 @@
+<mat-card>  
+  <div class="alert alert-info">  
+      <strong>Simple Angular Material DataTable</strong>  
+  </div>  
+  <mat-form-field>
+    <input type="text" matInput (keyup)="searchFilter($event.target.value)" (focus)="setupFilter('title')" placeholder="Search by Title">
+  </mat-form-field>
+  <div class="example-container mat-elevation-z8">  
+      <mat-table [dataSource]="dataSource">   
+          <ng-container matColumnDef="id">  
+              <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>  
+              <mat-cell *matCellDef="let post"> {{post.id}} </mat-cell>  
+          </ng-container>    
+          <ng-container matColumnDef="userId">  
+              <mat-header-cell *matHeaderCellDef> User ID </mat-header-cell>  
+              <mat-cell *matCellDef="let post"> {{post.userId}} </mat-cell>  
+          </ng-container>  
+          <ng-container matColumnDef="title">  
+              <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>  
+              <mat-cell *matCellDef="let post"> {{post.title}} </mat-cell>  
+          </ng-container>   
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>  
+          <mat-row (click)="modal(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>  
+      </mat-table>  
+  </div>  
+</mat-card>  
